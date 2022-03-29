@@ -8,5 +8,18 @@
  * @author star_
  */
 public class Locations {
+    String location;
+    
+    public Locations(String theLocation){
+        location = theLocation;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     
 }
