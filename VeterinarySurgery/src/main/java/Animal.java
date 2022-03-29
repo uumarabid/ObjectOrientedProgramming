@@ -11,24 +11,76 @@ import java.lang.Math;
  *
  * @author star_
  */
-public class Animal {
+public abstract class Animal {
     String name;
     String colour;
     String breed;
     int age;
+    String ownerGiveName;
+    String ownerSurname;
     int animalNumber;
     LocalDate registrationDate;
     
     // constructor
-    public Animal(String theName, String theColour, String theBreed, int theAge ){
+    public Animal(String theName, String theColour, String theBreed, int theAge, String theOwnerGiveName, String theOwnerSurname){
         name = theName;
         colour = theColour;
-        age = theAge;
         breed = theBreed;
+        age = theAge;
+        ownerSurname = theOwnerGiveName;
+        ownerGiveName = theOwnerSurname;
         animalNumber = (int) (Math.random() * 10000);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAnimalNumber() {
+        return animalNumber;
+    }
+
+    public void setAnimalNumber(int animalNumber) {
+        this.animalNumber = animalNumber;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
     
-    //methods
+    
     public void makeNoise(){
         System.out.println(name + " is making noise.");
     }

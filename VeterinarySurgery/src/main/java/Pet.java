@@ -9,8 +9,8 @@
  */
 public class Pet extends Animal{
     
-    public Pet(String theName, String theColour, String theBreed, int theAge){
-        super(theName,theColour, theBreed, theAge);
+    public Pet(String theName, String theColour, String theBreed, int theAge, String theOwnerGiveName, String theOwnerSurname){
+        super(theName,theColour, theBreed, theAge, theOwnerGiveName, theOwnerSurname);
     }
     
 }
