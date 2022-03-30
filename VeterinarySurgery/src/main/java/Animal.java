@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.lang.Math;
 
@@ -11,7 +12,7 @@ import java.lang.Math;
  *
  * @author star_
  */
-public abstract class Animal {
+public class Animal implements Serializable {
     String name;
     String colour;
     String breed;
@@ -20,6 +21,8 @@ public abstract class Animal {
     String ownerSurname;
     int animalNumber;
     LocalDate registrationDate;
+     
+
     
     // constructor
     public Animal(String theName, String theColour, String theBreed, int theAge, String theOwnerGiveName, String theOwnerSurname){
