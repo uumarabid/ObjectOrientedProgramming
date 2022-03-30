@@ -20,6 +20,8 @@ public class Serialisation {
      */
     public static void main(String[] args) {
         Animal myAnimal = new Animal("Polly", "Grey", "German", 10, "Umar", "Abid");
+        Animal hisAnimal = new Animal("Rosi", "White", "Italian", 8, "Sikandar", "Butt");
+        Pet myPet = new Pet("Mithu", "Green", "African", 1, "Joo", "Blogs");
 
         try {
             FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
