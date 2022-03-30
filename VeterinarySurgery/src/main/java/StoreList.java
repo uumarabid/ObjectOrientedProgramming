@@ -1,30 +1,25 @@
-
-
 package serialisation;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 //import serialisation.Animal;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author star_
- */
-public class StoreList  {
+public class StoreList {
+
     private ArrayList<Animal> animalsToRegister;
     public final int MAX;
-    
-    public StoreList(int maxIn){
+
+    public StoreList(int maxIn) {
         animalsToRegister = new ArrayList<>();
         MAX = maxIn;
     }
-    
+
     // adds a new animal to the list
-    public boolean addAnimal(Animal theAnimal){
-        if(!isFull()){
+    public boolean addAnimal(Animal theAnimal) {
+        if (!isFull()) {
             animalsToRegister.add(theAnimal);
             return true;
         } else {
@@ -34,43 +29,56 @@ public class StoreList  {
 
     // tells the list is full
     private boolean isFull() {
-        return animalsToRegister.size()== MAX;
+        return animalsToRegister.size() == MAX;
     }
+
     //tells the list is empty
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return animalsToRegister.isEmpty();
     }
-    
+
     // total number of animals in the list
-    
-    public int getTotal(){
+    public int getTotal() {
         return animalsToRegister.size();
     }
-    
+
     // animal position in the lsit
-    
-    public Animal getAnimal(int positionIn){
-        if(positionIn < 0 || positionIn >= getTotal()){
+    public Animal getAnimal(int positionIn) {
+        if (positionIn < 0 || positionIn >= getTotal()) {
             return null;
-        }
-        else{
+        } else {
             return animalsToRegister.get(positionIn);
         }
     }
-    
+
     // animal and owner in the lsit to be displayed
-    
-    public String displayAnimals(){
+    public String displayAnimals() {
         String output = "\n";
-        for (int counter = 0; counter < animalsToRegister.size(); counter++){
-            output += animalsToRegister.get(counter).ownerGiveName + "\t" + 
-                    animalsToRegister.get(counter).ownerSurname;
-            output += animalsToRegister.get(counter).getName() + "\t" + 
-                    animalsToRegister.get(counter).animalNumber + "\t" +
-                    animalsToRegister.get(counter).registrationDate;
+        for (int counter = 0; counter < animalsToRegister.size(); counter++) {
+            output += animalsToRegister.get(counter).ownerGiveName + "\t"
+                    + animalsToRegister.get(counter).ownerSurname;
+            output += animalsToRegister.get(counter).getName() + "\t"
+                    + animalsToRegister.get(counter).animalNumber + "\t"
+                    + animalsToRegister.get(counter).registrationDate;
             output += "\n\n";
         }
         return output;
     }
-    
+    //create a save  method 
+    // call serialize class here and pass the animalsToRegister
+
+    public boolean saveAnimals() {
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(animalsToRegister);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in ./surgery.txt file");
+        } catch (IOException myException) {
+            myException.printStackTrace();
+        }
+        return true;
+    }
 }

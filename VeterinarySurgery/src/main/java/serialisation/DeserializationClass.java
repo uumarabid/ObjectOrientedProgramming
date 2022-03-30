@@ -1,6 +1,7 @@
 package serialisation;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,7 +14,8 @@ public class DeserializationClass {
      */
     public static void main(String[] args) {
         Object obj;
-        Animal myAnimal;
+        ArrayList<Animal> myAnimal;
+        
         try {
             FileInputStream fileIn = new FileInputStream("./surgery.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -21,16 +23,21 @@ public class DeserializationClass {
             //read the information in as a object
             obj = in.readObject();
             //cast the object as an animal
-            myAnimal = (Animal) obj;
+            myAnimal = (ArrayList<Animal>) obj;
             in.close();
             fileIn.close();
-            System.out.println("Deserializing Animal...");
-            System.out.println("Name of animal: " + myAnimal.name);
-            System.out.println("Colour of animal: " + myAnimal.colour);
-            System.out.println("Breed of animal: " + myAnimal.breed);
-            System.out.println("Age of animal: " + myAnimal.age);
-            System.out.println("Owner given name: " + myAnimal.ownerGiveName);
-            System.out.println("Owner surname: " + myAnimal.ownerSurname);
+            for (int i = 0; i < myAnimal.size(); i++) {
+                Animal item = myAnimal.get(i);
+                System.out.println("Deserializing Animal...");
+                System.out.println("Name of animal: " + item.name);
+                System.out.println("Colour of animal: " + item.colour);
+                System.out.println("Breed of animal: " + item.breed);
+                System.out.println("Age of animal: " + item.age);
+                System.out.println("Owner given name: " + item.ownerGiveName);
+                System.out.println("Owner surname: " + item.ownerSurname);                
+                System.out.println("-------------");
+
+            }
         } catch (IOException i) {
             i.printStackTrace();
             return;

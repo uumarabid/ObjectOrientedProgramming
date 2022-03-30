@@ -1,6 +1,7 @@
 package serialisation;
 
 import java.io.*;
+import java.util.ArrayList;
 //import java.io.FileOutputStream;
 //import java.io.IOException;
 //import java.io.ObjectOutputStream;
@@ -19,14 +20,20 @@ public class Serialisation {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Animal myAnimal = new Animal("Polly", "Grey", "German", 10, "Umar", "Abid");
-        Animal hisAnimal = new Animal("Rosi", "White", "Italian", 8, "Sikandar", "Butt");
+         ArrayList<Animal> animals = new ArrayList<Animal>();
+        
+        Animal myAnimal = new Pet("Polly", "Grey", "German", 10, "Umar", "Abid");
+        Animal hisAnimal = new Pet("Rosi", "White", "Italian", 8, "Sikandar", "Butt");
         Pet myPet = new Pet("Mithu", "Green", "African", 1, "Joo", "Blogs");
+        
+        animals.add(myAnimal);        
+        animals.add(hisAnimal);        
+        animals.add(myPet);
 
         try {
             FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(myAnimal);
+            out.writeObject(animals);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in ./surgery.txt file");

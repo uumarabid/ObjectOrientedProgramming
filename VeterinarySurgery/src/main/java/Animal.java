@@ -21,7 +21,7 @@ public class Animal implements Serializable {
     String ownerSurname;
     int animalNumber;
     LocalDate registrationDate;
-    private  static final long serialVersionUID = 546222361;
+    private static final long serialVersionUID = 546222361;
      
 
     
