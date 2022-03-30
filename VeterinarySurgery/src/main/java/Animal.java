@@ -1,4 +1,4 @@
-
+package serialisation;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.lang.Math;
@@ -21,6 +21,7 @@ public class Animal implements Serializable {
     String ownerSurname;
     int animalNumber;
     LocalDate registrationDate;
+    private  static final long serialVersionUID = 546222361;
      
 
     

@@ -1,6 +1,6 @@
 
 
-
+package serialisation;
 import java.util.ArrayList;
 //import serialisation.Animal;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author star_
  */
-public class StoreList {
+public class StoreList  {
     private ArrayList<Animal> animalsToRegister;
     public final int MAX;
     
