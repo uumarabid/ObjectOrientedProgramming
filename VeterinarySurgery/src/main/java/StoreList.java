@@ -64,7 +64,7 @@ public class StoreList {
         }
         return output;
     }
-    //create a save  method 
+    //create a save method 
     // call serialize class here and pass the animalsToRegister
 
     public boolean saveAnimals() {
