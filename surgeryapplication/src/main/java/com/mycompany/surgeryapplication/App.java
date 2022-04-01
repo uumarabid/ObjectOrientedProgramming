@@ -95,6 +95,9 @@ public class App extends Application {
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
         
+        // call private methods for button event handler
+        addButton.setOnAction(e -> addHandler());
+        
         
         
         
@@ -114,6 +117,10 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private void addHandler() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
