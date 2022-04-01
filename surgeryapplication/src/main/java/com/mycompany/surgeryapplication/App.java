@@ -1,6 +1,7 @@
 package com.mycompany.surgeryapplication;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -77,6 +78,14 @@ public class App extends Application {
         font = new Font ("MuseoSans", 30);
         animallaLabel.setFont(font);
         ownerLabel.setFont(font);
+        
+        // HBox elements positioning 
+        animalDetails.setAlignment(Pos.CENTER);
+        ownerDetails.setAlignment(Pos.CENTER);
+        addButton.setAlignment(Pos.CENTER);
+        
+        
+        
         
         
         
