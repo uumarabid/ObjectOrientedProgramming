@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -25,7 +26,7 @@ public class App extends Application {
     private final int HEIGHT = 800;
     // visual components
     private Label headingLabel = new Label("Book in your animal"); // main heading
-    private Label animalleLabel = new Label("Animal details"); // sub heading
+    private Label animallaLabel = new Label("Animal details"); // sub heading
     private Label nameLabel = new Label("Name");
     private TextField nameField = new TextField();
     private Label colourLabel = new Label("Colour");
@@ -64,11 +65,19 @@ public class App extends Application {
         // vertical box
         VBox vb = new VBox(8);
         // add components to VBox
-        vb.getChildren().addAll(headingLabel, sectSeparator, animalleLabel, animalDetails, sectSeparator2, 
+        vb.getChildren().addAll(headingLabel, sectSeparator, animallaLabel, animalDetails, sectSeparator2, 
                 ownerLabel, ownerDetails, sectSeparator3, displayAnimals, sectSeparator4, addButton);
         
         // create the scene
         Scene scene = new Scene (vb, Color.web("#c1c1f0"));
+        
+        // set headings font
+        Font font = new Font("MuseoSans", 45);
+        headingLabel.setFont(font);
+        font = new Font ("MuseoSans", 30);
+        animallaLabel.setFont(font);
+        ownerLabel.setFont(font);
+        
         
         
 
