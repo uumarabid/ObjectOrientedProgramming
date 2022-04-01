@@ -134,7 +134,7 @@ public class App extends Application {
             surnameField.setText("");
             displayAnimals.setText("");
             displayAnimals.appendText(animalName + " successfully added");
-            displayAnimals.appendText("\n\nThe animals currently awaiting check-up are");
+            displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
             displayAnimals.appendText(animalList.displayAnimals());
 
         }
