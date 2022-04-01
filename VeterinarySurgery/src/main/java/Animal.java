@@ -15,8 +15,9 @@ import java.lang.Math;
 public class Animal implements Serializable {
     String name;
     String colour;
-    String breed;
+    String gender;
     int age;
+    String illnesses;
     String ownerGiveName;
     String ownerSurname;
     int animalNumber;
@@ -26,11 +27,12 @@ public class Animal implements Serializable {
 
     
     // constructor
-    public Animal(String theName, String theColour, String theBreed, int theAge, String theOwnerGiveName, String theOwnerSurname){
+    public Animal(String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
         name = theName;
         colour = theColour;
-        breed = theBreed;
+        gender = theGender;
         age = theAge;
+        illnesses = theIllnesses;
         ownerSurname = theOwnerGiveName;
         ownerGiveName = theOwnerSurname;
         animalNumber = (int) (Math.random() * 10000);
@@ -52,12 +54,12 @@ public class Animal implements Serializable {
         this.colour = colour;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getGender() {
+        return gender;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public int getAge() {
@@ -66,6 +68,14 @@ public class Animal implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getIllnesses() {
+        return illnesses;
+    }
+
+    public void setIllnesses(String illnesses) {
+        this.illnesses = illnesses;
     }
 
     public int getAnimalNumber() {

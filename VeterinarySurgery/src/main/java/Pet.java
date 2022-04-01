@@ -12,8 +12,8 @@ package serialisation;
  */
 public class Pet extends Animal{
     
-    public Pet(String theName, String theColour, String theBreed, int theAge, String theOwnerGiveName, String theOwnerSurname){
-        super(theName,theColour, theBreed, theAge, theOwnerGiveName, theOwnerSurname);
+    public Pet(String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
+        super(theName,theColour, theGender, theAge, theIllnesses, theOwnerGiveName, theOwnerSurname);
     }
     
 }

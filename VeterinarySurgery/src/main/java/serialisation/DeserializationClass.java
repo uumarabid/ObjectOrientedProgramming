@@ -31,7 +31,7 @@ public class DeserializationClass {
                 System.out.println("Deserializing Animal...");
                 System.out.println("Name of animal: " + item.name);
                 System.out.println("Colour of animal: " + item.colour);
-                System.out.println("Breed of animal: " + item.breed);
+                System.out.println("Breed of animal: " + item.gender);
                 System.out.println("Age of animal: " + item.age);
                 System.out.println("Owner given name: " + item.ownerGiveName);
                 System.out.println("Owner surname: " + item.ownerSurname);                

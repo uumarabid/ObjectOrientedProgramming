@@ -22,9 +22,9 @@ public class Serialisation {
     public static void main(String[] args) {
          ArrayList<Animal> animals = new ArrayList<Animal>();
         
-        Animal myAnimal = new Pet("Polly", "Grey", "German", 10, "Umar", "Abid");
-        Animal hisAnimal = new Pet("Rosi", "White", "Italian", 8, "Sikandar", "Butt");
-        Pet myPet = new Pet("Mithu", "Green", "African", 1, "Joo", "Blogs");
+        Animal myAnimal = new Pet("Polly", "Grey", "Female", 10, "Flue", "Umar", "Abid");
+        Animal hisAnimal = new Pet("Rosi", "White", "Female", 8, "Cough", "Sikandar", "Butt");
+        Pet myPet = new Pet("Mithu", "Green", "Male", 1, "Flue", "Joo", "Blogs");
         
         animals.add(myAnimal);        
         animals.add(hisAnimal);        

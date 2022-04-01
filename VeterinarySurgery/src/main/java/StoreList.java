@@ -58,8 +58,10 @@ public class StoreList {
             output += animalsToRegister.get(counter).ownerGiveName + "\t"
                     + animalsToRegister.get(counter).ownerSurname;
             output += animalsToRegister.get(counter).getName() + "\t"
-                    + animalsToRegister.get(counter).animalNumber + "\t"
-                    + animalsToRegister.get(counter).registrationDate;
+                    + animalsToRegister.get(counter).colour + "\t"
+                    + animalsToRegister.get(counter).gender;
+            output += animalsToRegister.get(counter).age + "\t"
+                    + animalsToRegister.get(counter).illnesses;
             output += "\n\n";
         }
         return output;
