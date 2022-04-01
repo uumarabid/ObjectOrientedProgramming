@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -65,6 +66,9 @@ public class App extends Application {
         // add components to VBox
         vb.getChildren().addAll(headingLabel, sectSeparator, animalleLabel, animalDetails, sectSeparator2, 
                 ownerLabel, ownerDetails, sectSeparator3, displayAnimals, sectSeparator4, addButton);
+        
+        // create the scene
+        Scene scene = new Scene (vb, Color.web("#c1c1f0"));
         
         
 
