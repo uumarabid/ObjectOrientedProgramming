@@ -54,6 +54,11 @@ public class App extends Application {
         HBox animalDetails = new HBox(8); // spacing = 8
         HBox ownerDetails = new HBox(8);
         
+        // add components to HBoxes
+        animalDetails.getChildren().addAll(nameLabel, nameField, colourLabel, colourField, 
+                genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
+        ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
+        
 
         stage.setScene(scene);
         stage.show();
