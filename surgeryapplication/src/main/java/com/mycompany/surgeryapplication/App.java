@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -58,6 +59,13 @@ public class App extends Application {
         animalDetails.getChildren().addAll(nameLabel, nameField, colourLabel, colourField, 
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
+        
+        // vertical box
+        VBox vb = new VBox(8);
+        // add components to VBox
+        vb.getChildren().addAll(headingLabel, sectSeparator, animalleLabel, animalDetails, sectSeparator2, 
+                ownerLabel, ownerDetails, sectSeparator3, displayAnimals, sectSeparator4, addButton);
+        
         
 
         stage.setScene(scene);
