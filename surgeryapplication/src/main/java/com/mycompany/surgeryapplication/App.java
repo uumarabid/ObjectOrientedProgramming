@@ -25,7 +25,7 @@ public class App extends Application {
     private StoreList animalList;
 
     // WIDTH and HEIGHT of GUI
-    private final int WIDTH = 1000;
+    private final int WIDTH = 1100;
     private final int HEIGHT = 800;
     // visual components
     private Label headingLabel = new Label("Book in your animal"); // main heading
@@ -113,19 +113,18 @@ public class App extends Application {
         String ownerGiveName = giveNameField.getText();
         String OwnerSurname = surnameField.getText();
         //conditions
-        if(animalName.length()== 0 || animalColour.length()== 0 || animalGender.length()== 0 || 
-                ageField.getText().length()== 0 || animalIllnesses.length()== 0){
-            displayAnimals.setText("You must fill in all the details regarding animal");          
-        }
-        else if(ownerGiveName.length()== 0 || OwnerSurname.length()== 0){
+        if (animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
+                || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
+            displayAnimals.setText("You must fill in all the details regarding animal");
+        } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
             displayAnimals.setText("You must enter both your given name and surname");
-        }
-        else{
-            
-        int animalAge = parseInt(ageField.getText());
-            Animal animalToAdd = new Animal(animalName, animalColour,animalGender, animalAge,animalIllnesses, ownerGiveName, OwnerSurname );
-            
+        } else {
+
+            int animalAge = parseInt(ageField.getText());
+            Animal animalToAdd = new Animal(animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
+
             animalList.addAnimal(animalToAdd);
+            animalList.saveAnimals();
             nameField.setText("");
             colourField.setText("");
             genderField.setText("");
@@ -137,9 +136,9 @@ public class App extends Application {
             displayAnimals.appendText(animalName + " successfully added");
             displayAnimals.appendText("\n\nThe animals currently awaiting check-up are");
             displayAnimals.appendText(animalList.displayAnimals());
-            
+
         }
-        
+
     }
 
     public static void main(String[] args) {
