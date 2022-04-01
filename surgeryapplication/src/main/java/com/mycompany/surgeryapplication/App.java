@@ -1,5 +1,6 @@
 package com.mycompany.surgeryapplication;
 
+import static java.lang.Integer.parseInt;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -58,69 +59,91 @@ public class App extends Application {
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
         HBox ownerDetails = new HBox(8);
-        
+
         // add components to HBoxes
-        animalDetails.getChildren().addAll(nameLabel, nameField, colourLabel, colourField, 
+        animalDetails.getChildren().addAll(nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
-        
+
         // vertical box
         VBox vb = new VBox(8);
         // add components to VBox
-        vb.getChildren().addAll(headingLabel, sectSeparator, animallaLabel, animalDetails, sectSeparator2, 
+        vb.getChildren().addAll(headingLabel, sectSeparator, animallaLabel, animalDetails, sectSeparator2,
                 ownerLabel, ownerDetails, sectSeparator3, displayAnimals, sectSeparator4, addButton);
-        
+
         // create the scene
-        Scene scene = new Scene (vb, Color.web("#c1c1f0"));
-        
+        Scene scene = new Scene(vb, Color.web("#c1c1f0"));
+
         // set headings font
         Font font = new Font("MuseoSans", 45);
         headingLabel.setFont(font);
-        font = new Font ("MuseoSans", 30);
+        font = new Font("MuseoSans", 30);
         animallaLabel.setFont(font);
         ownerLabel.setFont(font);
-        
+
         // HBox elements positioning 
         animalDetails.setAlignment(Pos.CENTER);
         ownerDetails.setAlignment(Pos.CENTER);
         addButton.setAlignment(Pos.CENTER);
-        
+
         // VBox positioning and colour
         vb.setAlignment(Pos.CENTER);
         vb.setBackground(Background.EMPTY);
-        
+
         // set minimum and maximum width of component
         displayAnimals.setMaxSize(400, 700);
-        
+
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
-        
+
         // call private methods for button event handler
         addButton.setOnAction(e -> addHandler());
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
         stage.setScene(scene);
+        stage.setTitle("Veterinary Surgery");
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
+    //event handler
+    private void addHandler() {
+        String animalName = nameField.getText();
+        String animalColour = colourField.getText();
+        String animalGender = genderField.getText();
+        String animalIllnesses = illnessesField.getText();
+        String ownerGiveName = giveNameField.getText();
+        String OwnerSurname = surnameField.getText();
+        //conditions
+        if(animalName.length()== 0 || animalColour.length()== 0 || animalGender.length()== 0 || 
+                ageField.getText().length()== 0 || animalIllnesses.length()== 0){
+            displayAnimals.setText("You must fill in all the details regarding animal");          
+        }
+        else if(ownerGiveName.length()== 0 || OwnerSurname.length()== 0){
+            displayAnimals.setText("You must enter both your given name and surname");
+        }
+        else{
+            
+        int animalAge = parseInt(ageField.getText());
+            Animal animalToAdd = new Animal(animalName, animalColour,animalGender, animalAge,animalIllnesses, ownerGiveName, OwnerSurname );
+            
+            animalList.addAnimal(animalToAdd);
+            nameField.setText("");
+            colourField.setText("");
+            genderField.setText("");
+            ageField.setText("");
+            illnessesField.setText("");
+            giveNameField.setText("");
+            surnameField.setText("");
+            displayAnimals.setText("");
+            displayAnimals.appendText(animalName + " successfully added");
+            displayAnimals.appendText("\n\nThe animals currently awaiting check-up are");
+            displayAnimals.appendText(animalList.displayAnimals());
+            
+        }
+        
     }
 
-    private void addHandler() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void main(String[] args) {
+        launch(args);
     }
 
 }
