@@ -89,6 +89,16 @@ public class App extends Application {
         vb.setAlignment(Pos.CENTER);
         vb.setBackground(Background.EMPTY);
         
+        // set minimum and maximum width of component
+        displayAnimals.setMaxSize(400, 700);
+        
+        stage.setWidth(WIDTH);
+        stage.setHeight(HEIGHT);
+        
+        
+        
+        
+        
         
         
         
