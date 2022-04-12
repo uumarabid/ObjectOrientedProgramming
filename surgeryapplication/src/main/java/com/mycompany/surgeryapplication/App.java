@@ -63,7 +63,8 @@ public class App extends Application {
         
         //combo box
         ComboBox<String> box = new ComboBox<>();
-        box.getItems().addAll("Cat", "Dog", "Mouse", "Rabit");
+        box.getItems().addAll("Cat", "Dog", "Mouse", "Rabbit");
+        box.setValue("Type of animal");
 
         // add components to HBoxes
         animalDetails.getChildren().addAll(box,nameLabel, nameField, colourLabel, colourField,
@@ -120,7 +121,7 @@ public class App extends Application {
         //conditions
         if (animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
                 || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
-            displayAnimals.setText("You must fill in all the details regarding animal");
+            displayAnimals.setText("You must complete the missing animal details");
         } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
             displayAnimals.setText("You must enter both your given name and surname");
         } else {
