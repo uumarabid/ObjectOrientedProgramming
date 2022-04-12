@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
@@ -59,9 +60,13 @@ public class App extends Application {
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
         HBox ownerDetails = new HBox(8);
+        
+        //combo box
+        ComboBox<String> box = new ComboBox<>();
+        box.getItems().addAll("Cat", "Dog", "Mouse", "Rabit");
 
         // add components to HBoxes
-        animalDetails.getChildren().addAll(nameLabel, nameField, colourLabel, colourField,
+        animalDetails.getChildren().addAll(box,nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
 
