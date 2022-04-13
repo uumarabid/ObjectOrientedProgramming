@@ -79,7 +79,7 @@ public class App extends Application {
         VBox vb = new VBox(8);
         // add components to VBox
         vb.getChildren().addAll(headingLabel, sectSeparator, animallaLabel, animalDetails, sectSeparator2,
-                ownerLabel, ownerDetails, sectSeparator3, displayAnimals, sectSeparator4, addButton);
+                ownerLabel, ownerDetails, sectSeparator3, displayAnimals, addButton, sectSeparator4);
 
         // create the scene
         Scene scene = new Scene(vb, Color.web("#c1c1f0"));
