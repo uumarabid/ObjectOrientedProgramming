@@ -100,6 +100,8 @@ public class App extends Application {
         illnessColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("illness"));
         
+        // ObservableList
+        
         
         // add columns to table
         table.getColumns().addAll(animalNameColumn, colourColumn, genderColumn, ageColumn, illnessColumn);
@@ -108,7 +110,7 @@ public class App extends Application {
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
-        hbTable.getChildren().addAll();
+        hbTable.getChildren().addAll(table);
 
         // vertical box
         VBox vb = new VBox(8);

@@ -56,10 +56,10 @@ public class StoreList {
         String output = "\n";
         for (int counter = 0; counter < animalsToRegister.size(); counter++) {
             output += animalsToRegister.get(counter).ownerGiveName + "\t"
-                    + animalsToRegister.get(counter).ownerSurname;
+                    + animalsToRegister.get(counter).ownerSurname + "\t";
             output += animalsToRegister.get(counter).getName() + "\t"
                     + animalsToRegister.get(counter).colour + "\t"
-                    + animalsToRegister.get(counter).gender;
+                    + animalsToRegister.get(counter).gender + "\t";
             output += animalsToRegister.get(counter).age + "\t"
                     + animalsToRegister.get(counter).illnesses;
             output += "\n\n";
