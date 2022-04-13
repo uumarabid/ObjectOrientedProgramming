@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
@@ -52,6 +53,9 @@ public class App extends Application {
     private TextField surnameField = new TextField();
     private TextArea displayAnimals = new TextArea();
     private Button addButton = new Button("Book in Animal");
+    
+    // tableView instance
+    private TableView table = new TableView();
 
     @Override
     public void start(Stage stage) {
