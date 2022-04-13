@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-
+    
     private StoreList animalList;
 
     // WIDTH and HEIGHT of GUI
@@ -58,10 +58,10 @@ public class App extends Application {
 
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
-
+    
     @Override
     public void start(Stage stage) {
-
+        
         animalList = new StoreList(20);
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
@@ -78,6 +78,28 @@ public class App extends Application {
         animalNameColumn.setMinWidth(100);
         animalNameColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("name"));
+        
+        TableColumn colourColumn = new TableColumn("Colour");
+        colourColumn.setMinWidth(100);
+        colourColumn.setCellValueFactory(
+                new PropertyValueFactory<Animal, String>("colour"));
+        
+        TableColumn genderColumn = new TableColumn("Gender");
+        genderColumn.setMinWidth(100);
+        genderColumn.setCellValueFactory(
+                new PropertyValueFactory<Animal, String>("gender"));
+        
+        TableColumn ageColumn = new TableColumn("Age");
+        ageColumn.setMinWidth(100);
+        ageColumn.setCellValueFactory(
+                new PropertyValueFactory<Animal, String>("age"));
+        
+        TableColumn illnessColumn = new TableColumn("Illness");
+        illnessColumn.setMinWidth(100);
+        illnessColumn.setCellValueFactory(
+                new PropertyValueFactory<Animal, String>("illness"));
+        
+        
 
         // add components to HBoxes
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
@@ -112,13 +134,13 @@ public class App extends Application {
 
         // set minimum and maximum width of component
         displayAnimals.setMaxSize(400, 700);
-
+        
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);
 
         // call private methods for button event handler
         addButton.setOnAction(e -> addHandler());
-
+        
         stage.setScene(scene);
         stage.setTitle("Veterinary Surgery");
         stage.show();
@@ -139,10 +161,10 @@ public class App extends Application {
         } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
             displayAnimals.setText("You must enter both your given name and surname");
         } else {
-
+            
             int animalAge = parseInt(ageField.getText());
             Animal animalToAdd = new Animal(animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
-
+            
             animalList.addAnimal(animalToAdd);
             animalList.saveAnimals();
             nameField.setText("");
@@ -156,13 +178,13 @@ public class App extends Application {
             displayAnimals.appendText(animalName + " successfully added");
             displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
             displayAnimals.appendText(animalList.displayAnimals());
-
+            
         }
-
+        
     }
-
+    
     public static void main(String[] args) {
         launch(args);
     }
-
+    
 }
