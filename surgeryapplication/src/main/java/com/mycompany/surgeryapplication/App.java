@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -69,6 +70,10 @@ public class App extends Application {
         ComboBox<String> box = new ComboBox<>();
         box.getItems().addAll("Cat", "Dog", "Mouse", "Rabbit");
         box.setValue("Type of animal");
+        
+        // set columns
+        TableColumn name = new TableColumn ("Animal name");
+        
 
         // add components to HBoxes
         animalDetails.getChildren().addAll(box,nameLabel, nameField, colourLabel, colourField,
