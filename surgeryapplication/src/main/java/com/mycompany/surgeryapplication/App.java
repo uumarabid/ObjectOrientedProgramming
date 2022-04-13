@@ -74,6 +74,7 @@ public class App extends Application {
         box.setValue("Type of animal");
 
         // set columns
+        // https://docs.oracle.com/javafx/2/ui_controls/table-view.htm
         TableColumn animalNameColumn = new TableColumn("Animal name");
         animalNameColumn.setMinWidth(100);
         animalNameColumn.setCellValueFactory(
@@ -100,7 +101,9 @@ public class App extends Application {
                 new PropertyValueFactory<Animal, String>("illness"));
         
         
-
+        // add columns to table
+        table.getColumns().addAll(animalNameColumn, colourColumn, genderColumn, ageColumn, illnessColumn);
+        
         // add components to HBoxes
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
