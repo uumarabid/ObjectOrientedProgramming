@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -54,9 +55,9 @@ public class App extends Application {
     private TextField surnameField = new TextField();
     private TextArea displayAnimals = new TextArea();
     private Button addButton = new Button("Book in Animal");
-    
+
     // tableView instance
-    private TableView table = new TableView();
+    private TableView<Animal> table = new TableView<Animal>();
 
     @Override
     public void start(Stage stage) {
@@ -65,26 +66,30 @@ public class App extends Application {
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
         HBox ownerDetails = new HBox(8);
-        
+        HBox hbTable = new HBox(8);
+
         //combo box
         ComboBox<String> box = new ComboBox<>();
         box.getItems().addAll("Cat", "Dog", "Mouse", "Rabbit");
         box.setValue("Type of animal");
-        
+
         // set columns
-        TableColumn name = new TableColumn ("Animal name");
-        
+        TableColumn animalNameColumn = new TableColumn("Animal name");
+        animalNameColumn.setMinWidth(100);
+        animalNameColumn.setCellValueFactory(
+                new PropertyValueFactory<Animal, String>("name"));
 
         // add components to HBoxes
-        animalDetails.getChildren().addAll(box,nameLabel, nameField, colourLabel, colourField,
+        animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
+        hbTable.getChildren().addAll();
 
         // vertical box
         VBox vb = new VBox(8);
         // add components to VBox
         vb.getChildren().addAll(headingLabel, sectSeparator, animallaLabel, animalDetails, sectSeparator2,
-                ownerLabel, ownerDetails, sectSeparator3, displayAnimals, addButton, sectSeparator4);
+                ownerLabel, ownerDetails, sectSeparator3, displayAnimals, addButton, sectSeparator4, hbTable);
 
         // create the scene
         Scene scene = new Scene(vb, Color.web("#c1c1f0"));
