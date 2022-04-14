@@ -64,7 +64,8 @@ public class StoreList {
                     + animalsToRegister.get(counter).colour + "\t"
                     + animalsToRegister.get(counter).gender + "\t";
             output += animalsToRegister.get(counter).age + "\t"
-                    + animalsToRegister.get(counter).illnesses;
+                    + animalsToRegister.get(counter).illnesses + "\t"
+                    + animalsToRegister.get(counter).type + "\t";;
             output += "\n\n";
         }
         return output;
@@ -95,7 +96,7 @@ public class StoreList {
 
     //create a save method 
     // call serialize class here and pass the animalsToRegister
-    
+     
     public boolean saveAnimals() {
 
         try {

@@ -55,7 +55,7 @@ public class App extends Application {
     private TextField surnameField = new TextField();
     private TextArea displayAnimals = new TextArea();
     private Button addButton = new Button("Book in Animal");
-
+    ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
     
@@ -69,7 +69,7 @@ public class App extends Application {
         HBox hbTable = new HBox(8);
 
         //combo box
-        ComboBox<String> box = new ComboBox<>();
+        
         box.getItems().addAll("Cat", "Dog", "Mouse", "Rabbit");
         box.setValue("Type of animal");
 
@@ -153,6 +153,7 @@ public class App extends Application {
 
     //event handler
     private void addHandler() {
+        String animalType =  box.getValue();
         String animalName = nameField.getText();
         String animalColour = colourField.getText();
         String animalGender = genderField.getText();
@@ -160,7 +161,7 @@ public class App extends Application {
         String ownerGiveName = giveNameField.getText();
         String OwnerSurname = surnameField.getText();
         //conditions
-        if (animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
+        if (animalType.length() == 0 || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
                 || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
             displayAnimals.setText("You must complete the missing animal details");
         } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
@@ -168,7 +169,7 @@ public class App extends Application {
         } else {
             
             int animalAge = parseInt(ageField.getText());
-            Animal animalToAdd = new Animal(animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
+            Animal animalToAdd = new Animal(animalType, animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
             
             animalList.addAnimal(animalToAdd);
             animalList.saveAnimals();

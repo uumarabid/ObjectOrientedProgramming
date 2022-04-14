@@ -13,6 +13,7 @@ import java.lang.Math;
  * @author star_
  */
 public class Animal implements Serializable {
+    String type;
     String name;
     String colour;
     String gender;
@@ -20,14 +21,13 @@ public class Animal implements Serializable {
     String illnesses;
     String ownerGiveName;
     String ownerSurname;
-    int animalNumber;
     LocalDate registrationDate;
-    private static final long serialVersionUID = 546222361;
      
 
     
     // constructor
-    public Animal(String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
+    public Animal(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
+        type = theType;
         name = theName;
         colour = theColour;
         gender = theGender;
@@ -35,7 +35,30 @@ public class Animal implements Serializable {
         illnesses = theIllnesses;
         ownerSurname = theOwnerGiveName;
         ownerGiveName = theOwnerSurname;
-        animalNumber = (int) (Math.random() * 10000);
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOwnerGiveName() {
+        return ownerGiveName;
+    }
+
+    public void setOwnerGiveName(String ownerGiveName) {
+        this.ownerGiveName = ownerGiveName;
+    }
+
+    public String getOwnerSurname() {
+        return ownerSurname;
+    }
+
+    public void setOwnerSurname(String ownerSurname) {
+        this.ownerSurname = ownerSurname;
     }
 
     public String getName() {
@@ -76,14 +99,6 @@ public class Animal implements Serializable {
 
     public void setIllnesses(String illnesses) {
         this.illnesses = illnesses;
-    }
-
-    public int getAnimalNumber() {
-        return animalNumber;
-    }
-
-    public void setAnimalNumber(int animalNumber) {
-        this.animalNumber = animalNumber;
     }
 
     public LocalDate getRegistrationDate() {

@@ -12,8 +12,8 @@ package com.mycompany.surgeryapplication;
  */
 public class Pet extends Animal{
     
-    public Pet(String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
-        super(theName,theColour, theGender, theAge, theIllnesses, theOwnerGiveName, theOwnerSurname);
+    public Pet(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
+        super(theType, theName,theColour, theGender, theAge, theIllnesses, theOwnerGiveName, theOwnerSurname);
     }
     
 }
