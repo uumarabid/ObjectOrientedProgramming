@@ -60,12 +60,12 @@ public class StoreList {
         for (int counter = 0; counter < animalsToRegister.size(); counter++) {
             output += animalsToRegister.get(counter).ownerGiveName + "\t"
                     + animalsToRegister.get(counter).ownerSurname + "\t";
-            output += animalsToRegister.get(counter).getName() + "\t"
-                    + animalsToRegister.get(counter).colour + "\t"
-                    + animalsToRegister.get(counter).gender + "\t";
-            output += animalsToRegister.get(counter).age + "\t"
-                    + animalsToRegister.get(counter).illnesses + "\t"
-                    + animalsToRegister.get(counter).type + "\t";;
+            output += "Owner of: " + animalsToRegister.get(counter).getName() + "\t"
+                    + " Colour: " + animalsToRegister.get(counter).colour + "\t"
+                    + " Gender: " + animalsToRegister.get(counter).gender + "\t";
+            output += " Age: " + animalsToRegister.get(counter).age + "\t"
+                    + " Illness: " + animalsToRegister.get(counter).illnesses + "\t"
+                    + " Type: " + animalsToRegister.get(counter).type + "\t";;
             output += "\n\n";
         }
         return output;
