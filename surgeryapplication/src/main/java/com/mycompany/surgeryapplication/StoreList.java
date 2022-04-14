@@ -1,8 +1,12 @@
 package com.mycompany.surgeryapplication;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 //import serialisation.Animal;
 
@@ -66,6 +70,31 @@ public class StoreList {
         }
         return output;
     }
+    // deserialize
+    public ArrayList<Animal> loadedAinimal(){
+        Object obj;
+        ArrayList<Animal> loadedAnimals = new ArrayList<>(); 
+        if (Files.exists(Paths.get("./surgery.txt"))) {
+            try{
+                FileInputStream fileIn = new FileInputStream("./surgery.txt");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                
+                obj = in.readObject();
+                loadedAnimals = (ArrayList<Animal>) obj;
+                in.close();
+                fileIn.close();
+            }
+            catch(IOException i){
+                i.printStackTrace();
+            }
+            catch(ClassNotFoundException c){
+                System.out.println("Animal class not found");
+                c.printStackTrace();
+            }
+        }
+        return loadedAnimals;
+    }
+            
     //create a save method 
     // call serialize class here and pass the animalsToRegister
 
