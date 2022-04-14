@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 //import serialisation.Animal;
 
-
 public class StoreList {
 
     private ArrayList<Animal> animalsToRegister;
@@ -70,37 +69,40 @@ public class StoreList {
         }
         return output;
     }
+
     // deserialize
-    public ArrayList<Animal> loadedAinimal(){
+    public ArrayList<Animal> loadAnimal() {
         Object obj;
-        ArrayList<Animal> loadedAnimals = new ArrayList<>(); 
+        ArrayList<Animal> loadedAnimals = new ArrayList<>();
         if (Files.exists(Paths.get("./surgery.txt"))) {
-            try{
+            try {
                 FileInputStream fileIn = new FileInputStream("./surgery.txt");
                 ObjectInputStream in = new ObjectInputStream(fileIn);
-                
+
                 obj = in.readObject();
                 loadedAnimals = (ArrayList<Animal>) obj;
                 in.close();
                 fileIn.close();
-            }
-            catch(IOException i){
+            } catch (IOException i) {
                 i.printStackTrace();
-            }
-            catch(ClassNotFoundException c){
+            } catch (ClassNotFoundException c) {
                 System.out.println("Animal class not found");
                 c.printStackTrace();
             }
         }
         return loadedAnimals;
     }
-            
+
     //create a save method 
     // call serialize class here and pass the animalsToRegister
-
+    
     public boolean saveAnimals() {
 
         try {
+            ArrayList<Animal> loadedAnimals = loadAnimal();
+            for(int i = 0; i < animalsToRegister.size(); i++){
+                loadedAnimals.add(animalsToRegister.get(i));
+            }
             FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(animalsToRegister);
