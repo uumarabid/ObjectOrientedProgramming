@@ -2,6 +2,8 @@ package com.mycompany.surgeryapplication;
 
 import static java.lang.Integer.parseInt;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,8 +31,10 @@ public class App extends Application {
     private StoreList animalList;
 
     // WIDTH and HEIGHT of GUI
-    private final int WIDTH = 1100;
-    private final int HEIGHT = 800;
+    //private final int WIDTH = 1100;
+    //private final int HEIGHT = 800;
+    
+    
     // visual components
     private Label headingLabel = new Label("Book in your animal"); // main heading
     private Label animallaLabel = new Label("Animal details"); // sub heading
@@ -101,7 +105,7 @@ public class App extends Application {
                 new PropertyValueFactory<Animal, String>("illness"));
         
         // ObservableList
-        
+        ObservableList<Animal> observrableList =  FXCollections.observableList(animalList.loadAnimal());
         
         // add columns to table
         table.getColumns().addAll(animalNameColumn, colourColumn, genderColumn, ageColumn, illnessColumn);
@@ -140,8 +144,10 @@ public class App extends Application {
         // set minimum and maximum width of component
         displayAnimals.setMaxSize(400, 700);
         
-        stage.setWidth(WIDTH);
-        stage.setHeight(HEIGHT);
+//        stage.setWidth(WIDTH);
+//        stage.setHeight(HEIGHT);
+        
+        stage.setMaximized(true);
 
         // call private methods for button event handler
         addButton.setOnAction(e -> addHandler());
