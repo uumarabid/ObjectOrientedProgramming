@@ -27,14 +27,12 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-    
+
     private StoreList animalList;
 
     // WIDTH and HEIGHT of GUI
     //private final int WIDTH = 1100;
     //private final int HEIGHT = 800;
-    
-    
     // visual components
     private Label headingLabel = new Label("Book in your animal"); // main heading
     private Label animallaLabel = new Label("Animal details"); // sub heading
@@ -62,10 +60,10 @@ public class App extends Application {
     ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
-    
+
     @Override
     public void start(Stage stage) {
-        
+
         animalList = new StoreList(20);
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
@@ -73,7 +71,6 @@ public class App extends Application {
         HBox hbTable = new HBox(8);
 
         //combo box
-        
         box.getItems().addAll("Cat", "Dog", "Mouse", "Rabbit");
         box.setValue("Type of animal");
 
@@ -83,33 +80,33 @@ public class App extends Application {
         animalNameColumn.setMinWidth(100);
         animalNameColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("name"));
-        
+
         TableColumn colourColumn = new TableColumn("Colour");
         colourColumn.setMinWidth(100);
         colourColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("colour"));
-        
+
         TableColumn genderColumn = new TableColumn("Gender");
         genderColumn.setMinWidth(100);
         genderColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("gender"));
-        
+
         TableColumn ageColumn = new TableColumn("Age");
         ageColumn.setMinWidth(100);
         ageColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("age"));
-        
+
         TableColumn illnessColumn = new TableColumn("Illness");
         illnessColumn.setMinWidth(100);
         illnessColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("illness"));
-        
+
         // ObservableList
-        ObservableList<Animal> observrableList =  FXCollections.observableList(animalList.loadAnimal());
-        
+        ObservableList<Animal> observrableList = FXCollections.observableList(animalList.loadAnimal());
+
         // add columns to table
         table.getColumns().addAll(animalNameColumn, colourColumn, genderColumn, ageColumn, illnessColumn);
-        
+
         // add components to HBoxes
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
@@ -143,15 +140,14 @@ public class App extends Application {
 
         // set minimum and maximum width of component
         displayAnimals.setMaxSize(400, 700);
-        
+
 //        stage.setWidth(WIDTH);
 //        stage.setHeight(HEIGHT);
-        
         stage.setMaximized(true);
 
         // call private methods for button event handler
         addButton.setOnAction(e -> addHandler());
-        
+
         stage.setScene(scene);
         stage.setTitle("Veterinary Surgery");
         stage.show();
@@ -159,44 +155,52 @@ public class App extends Application {
 
     //event handler
     private void addHandler() {
-        String animalType =  box.getValue();
-        String animalName = nameField.getText();
-        String animalColour = colourField.getText();
-        String animalGender = genderField.getText();
-        String animalIllnesses = illnessesField.getText();
-        String ownerGiveName = giveNameField.getText();
-        String OwnerSurname = surnameField.getText();
-        //conditions
-        if (animalType.length() == 0 || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
-                || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
-            displayAnimals.setText("You must complete the missing animal details");
-        } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
-            displayAnimals.setText("You must enter both your given name and surname");
-        } else {
-            
-            int animalAge = parseInt(ageField.getText());
-            Animal animalToAdd = new Animal(animalType, animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
-            
-            animalList.addAnimal(animalToAdd);
-            animalList.saveAnimals();
-            nameField.setText("");
-            colourField.setText("");
-            genderField.setText("");
-            ageField.setText("");
-            illnessesField.setText("");
-            giveNameField.setText("");
-            surnameField.setText("");
-            displayAnimals.setText("");
-            displayAnimals.appendText(animalName + " successfully added");
-            displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
-            displayAnimals.appendText(animalList.displayAnimals());
-            
+        try {
+            String animalType = box.getValue();
+            String animalName = nameField.getText();
+            String animalColour = colourField.getText();
+            String animalGender = genderField.getText();
+            String animalIllnesses = illnessesField.getText();
+            String ownerGiveName = giveNameField.getText();
+            String OwnerSurname = surnameField.getText();
+            //conditions
+            if (animalType.length() == 0 || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
+                    || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
+                displayAnimals.setText("You must complete the missing animal details");
+            } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
+                displayAnimals.setText("You must enter both your given name and surname");
+            } else {
+
+                int animalAge = parseInt(ageField.getText());
+                if (animalAge > 100) {
+                    displayAnimals.setText("You must enter a proper age");
+                } else {
+                    Animal animalToAdd = new Animal(animalType, animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
+
+                    animalList.addAnimal(animalToAdd);
+                    animalList.saveAnimals();
+                    nameField.setText("");
+                    colourField.setText("");
+                    genderField.setText("");
+                    ageField.setText("");
+                    illnessesField.setText("");
+                    giveNameField.setText("");
+                    surnameField.setText("");
+                    displayAnimals.setText("");
+                    displayAnimals.appendText(animalName + " successfully added");
+                    displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
+                    displayAnimals.appendText(animalList.displayAnimals());
+     
+                }
+
+            }
+        } catch (Exception ex) {
+
         }
-        
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
