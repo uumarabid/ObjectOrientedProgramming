@@ -57,9 +57,16 @@ public class App extends Application {
     private TextField surnameField = new TextField();
     private TextArea displayAnimals = new TextArea();
     private Button addButton = new Button("Book in Animal");
+    
+    private Label searchAnimalNameLabel = new Label("Search animal Name");
+    private TextField searchAnimalNameField = new TextField();
+    private Button searchButton = new Button("search");
+    
     ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
+    // search animal field
+    
 
     @Override
     public void start(Stage stage) {
@@ -111,7 +118,7 @@ public class App extends Application {
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
-        hbTable.getChildren().addAll(table);
+        hbTable.getChildren().addAll(searchAnimalNameLabel, searchAnimalNameField, searchButton, table);
 
         // vertical box
         VBox vb = new VBox(8);

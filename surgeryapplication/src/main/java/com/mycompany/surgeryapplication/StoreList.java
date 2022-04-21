@@ -106,7 +106,7 @@ public class StoreList {
             }
             FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(animalsToRegister);
+            out.writeObject(loadedAnimals);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in ./surgery.txt file");
