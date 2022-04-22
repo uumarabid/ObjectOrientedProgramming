@@ -120,6 +120,7 @@ public class App extends Application {
 
         // add columns to table
         table.getColumns().addAll(animalNameColumn, colourColumn, genderColumn, ageColumn, illnessColumn);
+        addButtonToTable();
 
         // add components to HBoxes
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
