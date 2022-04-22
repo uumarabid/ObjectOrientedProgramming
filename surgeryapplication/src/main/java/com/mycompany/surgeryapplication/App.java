@@ -1,6 +1,7 @@
 package com.mycompany.surgeryapplication;
 
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -57,7 +59,7 @@ public class App extends Application {
     private TextField surnameField = new TextField();
     private TextArea displayAnimals = new TextArea();
     private Button addButton = new Button("Book in Animal");
-    
+    // search animal field
     private Label searchAnimalNameLabel = new Label("Search animal Name");
     private TextField searchAnimalNameField = new TextField();
     private Button searchButton = new Button("search");
@@ -65,7 +67,10 @@ public class App extends Application {
     ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
-    // search animal field
+    // searched datafield
+    private TextArea viewDataField = new TextArea();
+    
+     ScrollBar s = new ScrollBar();
     
 
     @Override
@@ -106,10 +111,11 @@ public class App extends Application {
         TableColumn illnessColumn = new TableColumn("Illness");
         illnessColumn.setMinWidth(100);
         illnessColumn.setCellValueFactory(
-                new PropertyValueFactory<Animal, String>("illness"));
+                new PropertyValueFactory<Animal, String>("illnesses"));
 
         // ObservableList
         ObservableList<Animal> observrableList = FXCollections.observableList(animalList.loadAnimal());
+        table.setItems(observrableList);
 
         // add columns to table
         table.getColumns().addAll(animalNameColumn, colourColumn, genderColumn, ageColumn, illnessColumn);
@@ -118,7 +124,7 @@ public class App extends Application {
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
         ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
-        hbTable.getChildren().addAll(searchAnimalNameLabel, searchAnimalNameField, searchButton, table);
+        hbTable.getChildren().addAll(table, searchAnimalNameLabel, searchAnimalNameField, searchButton, viewDataField);
 
         // vertical box
         VBox vb = new VBox(8);
@@ -140,6 +146,7 @@ public class App extends Application {
         animalDetails.setAlignment(Pos.CENTER);
         ownerDetails.setAlignment(Pos.CENTER);
         addButton.setAlignment(Pos.CENTER);
+        //hbTable.setAlignment(Pos.CENTER);
 
         // VBox positioning and colour
         vb.setAlignment(Pos.CENTER);
@@ -201,6 +208,29 @@ public class App extends Application {
                 }
 
             }
+        } catch (Exception ex) {
+
+        }
+    }
+    
+        private void loadAnimalsInPage() {
+        try {
+            String animalSearchName = searchAnimalNameField.getText();
+
+            ArrayList<Animal> searchData = animalList.loadAnimal();
+            ArrayList<Animal> filteredData = new ArrayList<>();
+            for (int i = 0; i < searchData.size(); i++) {
+                if (searchData.get(i).name.contains(animalSearchName)) {
+                    filteredData.add(searchData.get(i));
+                }
+            }
+
+            // used this for reference https://docs.oracle.com/javafx/2/ui_controls/table-view.htm#:~:text=The%20TableView%20class%20provides%20built,default%2C%20no%20sorting%20is%20applied.
+            // this is to convert array list to observablelist,
+            // table doesn't take arraylist type
+            ObservableList<Animal> observableList = FXCollections.observableList(filteredData);
+
+            table.setItems(observableList);
         } catch (Exception ex) {
 
         }
