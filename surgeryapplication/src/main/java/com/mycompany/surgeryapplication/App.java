@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -24,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * JavaFX App
@@ -63,15 +65,14 @@ public class App extends Application {
     private Label searchAnimalNameLabel = new Label("Search animal Name");
     private TextField searchAnimalNameField = new TextField();
     private Button searchButton = new Button("search");
-    
+
     ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
     // searched datafield
     private TextArea viewDataField = new TextArea();
-    
-     ScrollBar s = new ScrollBar();
-    
+
+    ScrollBar s = new ScrollBar();
 
     @Override
     public void start(Stage stage) {
@@ -189,7 +190,8 @@ public class App extends Application {
                 if (animalAge > 100) {
                     displayAnimals.setText("You must enter a proper age");
                 } else {
-                    Animal animalToAdd = new Animal(animalType, animalName, animalColour, animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
+                    Animal animalToAdd = new Animal(animalType, animalName, animalColour,
+                            animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
 
                     animalList.addAnimal(animalToAdd);
                     animalList.saveAnimals();
@@ -204,7 +206,7 @@ public class App extends Application {
                     displayAnimals.appendText(animalName + " successfully added");
                     displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
                     displayAnimals.appendText(animalList.displayAnimals());
-     
+
                 }
 
             }
@@ -212,8 +214,8 @@ public class App extends Application {
 
         }
     }
-    
-        private void loadAnimalsInPage() {
+
+    private void loadAnimalsInPage() {
         try {
             String animalSearchName = searchAnimalNameField.getText();
 
@@ -233,6 +235,37 @@ public class App extends Application {
             table.setItems(observableList);
         } catch (Exception ex) {
 
+        }
+    }
+
+    // took it from https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
+    private void addButtonToTable() {
+        TableColumn<Animal, Void> colBtn = new TableColumn("");
+
+        Callback<TableColumn<Animal, Void>, TableCell<Animal, Void>> cellFactory
+                = new Callback<TableColumn<Animal, Void>, TableCell<Animal, Void>>() {
+            public TableCell<Animal, Void> call(final TableColumn<Animal, Void> param) {
+                final TableCell<Animal, Void> cell = new TableCell<Animal, Void>() {
+                    private final Button btn = new Button("Action");
+
+                    {
+                        btn.setOnAction((ActionEvent) -> {
+                            Animal data = getTableView().getItems().get(getIndex());
+                            
+                            String searched 
+                                    = "Animal"
+                                    + "\nName: " + data.name
+                                    + "\nColour " + data.colour
+                                    + "\nOwner"
+                                    + "\nOwner Name " + data.ownerGiveName
+                                    + "\nOner Surname " + data.ownerSurname;
+                            viewDataField.setText(searched);
+                        });
+                    }
+                    
+                    
+                }
+            }
         }
     }
 
