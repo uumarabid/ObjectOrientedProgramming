@@ -31,7 +31,7 @@ import javafx.util.Callback;
  * JavaFX App
  */
 public class App extends Application {
-
+    
     private StoreList animalList;
 
     // WIDTH and HEIGHT of GUI
@@ -65,18 +65,18 @@ public class App extends Application {
     private Label searchAnimalNameLabel = new Label("Search animal Name");
     private TextField searchAnimalNameField = new TextField();
     private Button searchButton = new Button("search");
-
+    
     ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
     // searched datafield
     private TextArea viewDataField = new TextArea();
-
+    
     ScrollBar s = new ScrollBar();
-
+    
     @Override
     public void start(Stage stage) {
-
+        
         animalList = new StoreList(20);
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
@@ -93,22 +93,22 @@ public class App extends Application {
         animalNameColumn.setMinWidth(100);
         animalNameColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("name"));
-
+        
         TableColumn colourColumn = new TableColumn("Colour");
         colourColumn.setMinWidth(100);
         colourColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("colour"));
-
+        
         TableColumn genderColumn = new TableColumn("Gender");
         genderColumn.setMinWidth(100);
         genderColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("gender"));
-
+        
         TableColumn ageColumn = new TableColumn("Age");
         ageColumn.setMinWidth(100);
         ageColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("age"));
-
+        
         TableColumn illnessColumn = new TableColumn("Illness");
         illnessColumn.setMinWidth(100);
         illnessColumn.setCellValueFactory(
@@ -155,6 +155,7 @@ public class App extends Application {
 
         // set minimum and maximum width of component
         displayAnimals.setMaxSize(400, 700);
+        viewDataField.setMaxSize(400, 700);
 
 //        stage.setWidth(WIDTH);
 //        stage.setHeight(HEIGHT);
@@ -162,7 +163,8 @@ public class App extends Application {
 
         // call private methods for button event handler
         addButton.setOnAction(e -> addHandler());
-
+        searchButton.setOnAction(e -> loadAnimalsInPage());
+        
         stage.setScene(scene);
         stage.setTitle("Veterinary Surgery");
         stage.show();
@@ -185,14 +187,14 @@ public class App extends Application {
             } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
                 displayAnimals.setText("You must enter both your given name and surname");
             } else {
-
+                
                 int animalAge = parseInt(ageField.getText());
                 if (animalAge > 100) {
                     displayAnimals.setText("You must enter a proper age");
                 } else {
                     Animal animalToAdd = new Animal(animalType, animalName, animalColour,
                             animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
-
+                    
                     animalList.addAnimal(animalToAdd);
                     animalList.saveAnimals();
                     nameField.setText("");
@@ -206,19 +208,19 @@ public class App extends Application {
                     displayAnimals.appendText(animalName + " successfully added");
                     displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
                     displayAnimals.appendText(animalList.displayAnimals());
-
+                    
                 }
-
+                
             }
         } catch (Exception ex) {
-
+            
         }
     }
-
+    
     private void loadAnimalsInPage() {
         try {
             String animalSearchName = searchAnimalNameField.getText();
-
+            
             ArrayList<Animal> searchData = animalList.loadAnimal();
             ArrayList<Animal> filteredData = new ArrayList<>();
             for (int i = 0; i < searchData.size(); i++) {
@@ -231,28 +233,29 @@ public class App extends Application {
             // this is to convert array list to observablelist,
             // table doesn't take arraylist type
             ObservableList<Animal> observableList = FXCollections.observableList(filteredData);
-
+            
             table.setItems(observableList);
         } catch (Exception ex) {
-
+            
         }
     }
 
     // took it from https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
     private void addButtonToTable() {
         TableColumn<Animal, Void> colBtn = new TableColumn("");
-
+        
         Callback<TableColumn<Animal, Void>, TableCell<Animal, Void>> cellFactory
                 = new Callback<TableColumn<Animal, Void>, TableCell<Animal, Void>>() {
+            @Override
             public TableCell<Animal, Void> call(final TableColumn<Animal, Void> param) {
                 final TableCell<Animal, Void> cell = new TableCell<Animal, Void>() {
                     private final Button btn = new Button("Action");
-
+                    
                     {
                         btn.setOnAction((ActionEvent) -> {
                             Animal data = getTableView().getItems().get(getIndex());
                             
-                            String searched 
+                            String searched
                                     = "Animal"
                                     + "\nName: " + data.name
                                     + "\nColour " + data.colour
@@ -263,14 +266,28 @@ public class App extends Application {
                         });
                     }
                     
-                    
-                }
-            }
-        }
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }            
+            
+        };
+        
+        colBtn.setCellFactory(cellFactory);
+        
+        table.getColumns().add(colBtn);
     }
-
+    
     public static void main(String[] args) {
         launch(args);
     }
-
+    
 }

@@ -65,7 +65,7 @@ public class StoreList {
                     + " Gender: " + animalsToRegister.get(counter).gender + "\t";
             output += " Age: " + animalsToRegister.get(counter).age + "\t"
                     + " Illness: " + animalsToRegister.get(counter).illnesses + "\t"
-                    + " Type: " + animalsToRegister.get(counter).type + "\t";;
+                    + " Type: " + animalsToRegister.get(counter).type + "\t";
             output += "\n\n";
         }
         return output;

@@ -1,7 +1,6 @@
 package com.mycompany.surgeryapplication;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.lang.Math;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
