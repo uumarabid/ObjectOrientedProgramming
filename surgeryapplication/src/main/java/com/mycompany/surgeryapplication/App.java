@@ -209,7 +209,7 @@ public class App extends Application {
                     displayAnimals.appendText(animalName + " successfully added");
                     displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
                     displayAnimals.appendText(animalList.displayAnimals());
-                    
+                    loadAnimalsInPage();
                 }
                 
             }
@@ -237,7 +237,7 @@ public class App extends Application {
             
             table.setItems(observableList);
         } catch (Exception ex) {
-            
+            throw ex;
         }
     }
 
@@ -250,7 +250,7 @@ public class App extends Application {
             @Override
             public TableCell<Animal, Void> call(final TableColumn<Animal, Void> param) {
                 final TableCell<Animal, Void> cell = new TableCell<Animal, Void>() {
-                    private final Button btn = new Button("Action");
+                    private final Button btn = new Button("View");
                     
                     {
                         btn.setOnAction((ActionEvent) -> {
@@ -262,7 +262,8 @@ public class App extends Application {
                                     + "\nColour " + data.colour
                                     + "\nOwner"
                                     + "\nOwner Name " + data.ownerGiveName
-                                    + "\nOner Surname " + data.ownerSurname;
+                                    + "\nOner Surname " + data.ownerSurname
+                                    + "\nRegistration Date " + data.registrationDate;
                             viewDataField.setText(searched);
                         });
                     }

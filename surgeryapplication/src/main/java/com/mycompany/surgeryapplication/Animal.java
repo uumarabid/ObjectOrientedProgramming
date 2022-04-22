@@ -1,7 +1,5 @@
 package com.mycompany.surgeryapplication;
 import java.io.Serializable;
-import java.time.LocalDate;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -20,7 +18,7 @@ public class Animal implements Serializable {
     String illnesses;
     String ownerGiveName;
     String ownerSurname;
-    LocalDate registrationDate;
+    String registrationDate;
      
 
     
@@ -100,11 +98,11 @@ public class Animal implements Serializable {
         this.illnesses = illnesses;
     }
 
-    public LocalDate getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
     

@@ -7,7 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 //import serialisation.Animal;
 
 public class StoreList {
@@ -102,7 +104,13 @@ public class StoreList {
         try {
             ArrayList<Animal> loadedAnimals = loadAnimal();
             for(int i = 0; i < animalsToRegister.size(); i++){
-                loadedAnimals.add(animalsToRegister.get(i));
+                Animal item = animalsToRegister.get(i);
+                
+                SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+                Date date = new Date(System.currentTimeMillis());
+                item.registrationDate = formatter.format(date);
+                
+                loadedAnimals.add(item);
             }
             FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
