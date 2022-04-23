@@ -18,10 +18,11 @@ public class Animal implements Serializable {
     String illnesses;
     String registrationDate;
     Person owner;
+    Locations address;
 
     
     // constructor
-    public Animal(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, Person theOwner){
+    public Animal(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, Person theOwner, Locations theAddress){
         type = theType;
         name = theName;
         colour = theColour;
@@ -29,6 +30,15 @@ public class Animal implements Serializable {
         age = theAge;
         illnesses = theIllnesses;
         owner = theOwner;
+        address = theAddress;
+    }
+
+    public Locations getAddress() {
+        return address;
+    }
+
+    public void setAddress(Locations address) {
+        this.address = address;
     }
 
     public String getType() {

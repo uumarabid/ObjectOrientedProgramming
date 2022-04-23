@@ -181,6 +181,7 @@ public class App extends Application {
             String animalIllnesses = illnessesField.getText();
             String ownerGiveName = giveNameField.getText();
             String OwnerSurname = surnameField.getText();
+            //String Address = addressField.getText(); // i have to add the address field in the UI 
             //conditions
             if (animalType.length() == 0 || animalType == "Type of animal" || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
                     || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
@@ -194,8 +195,12 @@ public class App extends Application {
                     displayAnimals.setText("You must enter a proper age");
                 } else {
                     Person ownerDetail = new Person( ownerGiveName, OwnerSurname);
+                    
+                    Locations address = new Locations("Address"); 
+                    // Locations address = new Locations(Address); // remove the above line and use this code for address
+                    
                     Animal animalToAdd = new Animal(animalType, animalName, animalColour,
-                            animalGender, animalAge, animalIllnesses, ownerDetail);
+                            animalGender, animalAge, animalIllnesses, ownerDetail, address);
                     
                     animalList.addAnimal(animalToAdd);
                     animalList.saveAnimals();
@@ -263,8 +268,9 @@ public class App extends Application {
                                     + "\nColour " + data.colour
                                     + "\nOwner"
                                     + "\nOwner Name " + data.owner.ownerGiveName
-                                    + "\nOner Surname " + data.owner.ownerSurname
-                                    + "\nRegistration Date " + data.registrationDate;
+                                    + "\nOwner Surname " + data.owner.ownerSurname
+                                    + "\nRegistration Date " + data.registrationDate
+                                    + "\nOwner Address " + data.address.location;
                             viewDataField.setText(searched);
                         });
                     }
