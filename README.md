@@ -16,3 +16,6 @@ This project is developed for the veterinary surgery.
 
 ### Software Used
  - NetBeans
+### UI
+
+![Application Image](/surgeryapplication/images/VeterinaryApp.JPG)
