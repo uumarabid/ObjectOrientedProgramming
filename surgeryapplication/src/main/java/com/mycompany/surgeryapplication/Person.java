@@ -12,20 +12,20 @@ import java.io.Serializable;
  * @author star_
  */
 public class Person implements Serializable{
-    String ownerGiveName;
+    String ownerGivenName;
     String ownerSurname; 
 
-    public Person(String ownerGiveName, String ownerSurname) {
-        this.ownerGiveName = ownerGiveName;
+    public Person(String ownerGivenName, String ownerSurname) {
+        this.ownerGivenName = ownerGivenName;
         this.ownerSurname = ownerSurname;
     }
 
-    public String getOwnerGiveName() {
-        return ownerGiveName;
+    public String getOwnerGivenName() {
+        return ownerGivenName;
     }
 
-    public void setOwnerGiveName(String ownerGiveName) {
-        this.ownerGiveName = ownerGiveName;
+    public void setOwnerGivenName(String ownerGivenName) {
+        this.ownerGivenName = ownerGivenName;
     }
 
     public String getOwnerSurname() {

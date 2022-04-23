@@ -55,10 +55,12 @@ public class App extends Application {
     private Separator sectSeparator3 = new Separator();
     private Separator sectSeparator4 = new Separator();
     private Label ownerLabel = new Label("Owner Details"); // sub heading
-    private Label giveNameLabel = new Label("Given Name");
-    private TextField giveNameField = new TextField();
+    private Label givenNameLabel = new Label("Given Name");
+    private TextField givenNameField = new TextField();
     private Label surnameLabel = new Label("Surname");
     private TextField surnameField = new TextField();
+    private Label ownerAddressLabel = new Label("Address");
+    private TextField ownerAddressField = new TextField();
     private TextArea displayAnimals = new TextArea();
     private Button addButton = new Button("Book in Animal");
     // search animal field
@@ -125,7 +127,7 @@ public class App extends Application {
         // add components to HBoxes
         animalDetails.getChildren().addAll(box, nameLabel, nameField, colourLabel, colourField,
                 genderLabel, genderField, ageLabel, ageField, illnessesLabel, illnessesField);
-        ownerDetails.getChildren().addAll(giveNameLabel, giveNameField, surnameLabel, surnameField);
+        ownerDetails.getChildren().addAll(givenNameLabel, givenNameField, surnameLabel, surnameField, ownerAddressLabel, ownerAddressField);
         hbTable.getChildren().addAll(table, searchAnimalNameLabel, searchAnimalNameField, searchButton, viewDataField);
 
         // vertical box
@@ -179,15 +181,15 @@ public class App extends Application {
             String animalColour = colourField.getText();
             String animalGender = genderField.getText();
             String animalIllnesses = illnessesField.getText();
-            String ownerGiveName = giveNameField.getText();
+            String ownerGiveName = givenNameField.getText();
             String OwnerSurname = surnameField.getText();
-            //String Address = addressField.getText(); // i have to add the address field in the UI 
+            String Address = ownerAddressField.getText(); // i have to add the address field in the UI 
             //conditions
             if (animalType.length() == 0 || animalType == "Type of animal" || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
                     || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
                 displayAnimals.setText("You must complete the missing animal details");
-            } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
-                displayAnimals.setText("You must enter both your given name and surname");
+            } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0 || Address.length() == 0) {
+                displayAnimals.setText("You must enter your given name, surname and address");
             } else {
                 
                 int animalAge = parseInt(ageField.getText());
@@ -196,8 +198,7 @@ public class App extends Application {
                 } else {
                     Person ownerDetail = new Person( ownerGiveName, OwnerSurname);
                     
-                    Locations address = new Locations("Address"); 
-                    // Locations address = new Locations(Address); // remove the above line and use this code for address
+                    Locations address = new Locations(Address); // remove the above line and use this code for address
                     
                     Animal animalToAdd = new Animal(animalType, animalName, animalColour,
                             animalGender, animalAge, animalIllnesses, ownerDetail, address);
@@ -209,9 +210,10 @@ public class App extends Application {
                     genderField.setText("");
                     ageField.setText("");
                     illnessesField.setText("");
-                    giveNameField.setText("");
+                    givenNameField.setText("");
                     surnameField.setText("");
                     displayAnimals.setText("");
+                    ownerAddressField.setText("");
                     displayAnimals.appendText(animalName + " successfully added");
                     displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
                     displayAnimals.appendText(animalList.displayAnimals());
@@ -267,7 +269,7 @@ public class App extends Application {
                                     + "\nName: " + data.name
                                     + "\nColour " + data.colour
                                     + "\nOwner"
-                                    + "\nOwner Name " + data.owner.ownerGiveName
+                                    + "\nOwner Name " + data.owner.ownerGivenName
                                     + "\nOwner Surname " + data.owner.ownerSurname
                                     + "\nRegistration Date " + data.registrationDate
                                     + "\nOwner Address " + data.address.location;

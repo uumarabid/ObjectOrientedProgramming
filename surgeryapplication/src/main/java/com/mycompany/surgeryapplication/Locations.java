@@ -1,5 +1,7 @@
 package com.mycompany.surgeryapplication;
 
+import java.io.Serializable;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -9,7 +11,7 @@ package com.mycompany.surgeryapplication;
  *
  * @author star_
  */
-public class Locations {
+public class Locations implements Serializable{
     String location;
     
     public Locations(String theLocation){
