@@ -47,7 +47,7 @@ public class StoreList {
         return animalsToRegister.size();
     }
 
-    // animal position in the lsit
+    // animal position in the list
     public Animal getAnimal(int positionIn) {
         if (positionIn < 0 || positionIn >= getTotal()) {
             return null;
@@ -57,6 +57,7 @@ public class StoreList {
     }
 
     // animal and owner in the lsit to be displayed
+    
     public String displayAnimals() {
         String output = "\n";
         for (int counter = 0; counter < animalsToRegister.size(); counter++) {
