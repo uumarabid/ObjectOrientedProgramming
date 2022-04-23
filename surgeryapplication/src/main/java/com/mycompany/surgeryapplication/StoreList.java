@@ -57,7 +57,6 @@ public class StoreList {
     }
 
     // animal and owner in the lsit to be displayed
-    
     public String displayAnimals() {
         String output = "\n";
         for (int counter = 0; counter < animalsToRegister.size(); counter++) {
@@ -99,18 +98,18 @@ public class StoreList {
 
     //create a save method 
     // call serialize class here and pass the animalsToRegister
-     
     public boolean saveAnimals() {
 
         try {
             ArrayList<Animal> loadedAnimals = loadAnimal();
-            for(int i = 0; i < animalsToRegister.size(); i++){
+            for (int i = 0; i < animalsToRegister.size(); i++) {
                 Animal item = animalsToRegister.get(i);
-                
-                SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+
+                // used the code for time from https://stackabuse.com/how-to-get-current-date-and-time-in-java/
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
                 Date date = new Date(System.currentTimeMillis());
                 item.registrationDate = formatter.format(date);
-                
+
                 loadedAnimals.add(item);
             }
             FileOutputStream fileOut = new FileOutputStream("./surgery.txt");
