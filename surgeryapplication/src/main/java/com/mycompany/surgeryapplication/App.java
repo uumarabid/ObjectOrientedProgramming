@@ -182,7 +182,7 @@ public class App extends Application {
             String ownerGiveName = giveNameField.getText();
             String OwnerSurname = surnameField.getText();
             //conditions
-            if (animalType.length() == 0 || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
+            if (animalType.length() == 0 || animalType == "Type of animal" || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
                     || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
                 displayAnimals.setText("You must complete the missing animal details");
             } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0) {
@@ -193,8 +193,9 @@ public class App extends Application {
                 if (animalAge > 100) {
                     displayAnimals.setText("You must enter a proper age");
                 } else {
+                    Person ownerDetail = new Person( ownerGiveName, OwnerSurname);
                     Animal animalToAdd = new Animal(animalType, animalName, animalColour,
-                            animalGender, animalAge, animalIllnesses, ownerGiveName, OwnerSurname);
+                            animalGender, animalAge, animalIllnesses, ownerDetail);
                     
                     animalList.addAnimal(animalToAdd);
                     animalList.saveAnimals();
@@ -261,8 +262,8 @@ public class App extends Application {
                                     + "\nName: " + data.name
                                     + "\nColour " + data.colour
                                     + "\nOwner"
-                                    + "\nOwner Name " + data.ownerGiveName
-                                    + "\nOner Surname " + data.ownerSurname
+                                    + "\nOwner Name " + data.owner.ownerGiveName
+                                    + "\nOner Surname " + data.owner.ownerSurname
                                     + "\nRegistration Date " + data.registrationDate;
                             viewDataField.setText(searched);
                         });

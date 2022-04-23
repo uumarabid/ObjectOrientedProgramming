@@ -16,22 +16,19 @@ public class Animal implements Serializable {
     String gender;
     int age;
     String illnesses;
-    String ownerGiveName;
-    String ownerSurname;
     String registrationDate;
-     
+    Person owner;
 
     
     // constructor
-    public Animal(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, String theOwnerGiveName, String theOwnerSurname){
+    public Animal(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, Person theOwner){
         type = theType;
         name = theName;
         colour = theColour;
         gender = theGender;
         age = theAge;
         illnesses = theIllnesses;
-        ownerSurname = theOwnerGiveName;
-        ownerGiveName = theOwnerSurname;
+        owner = theOwner;
     }
 
     public String getType() {
@@ -42,20 +39,12 @@ public class Animal implements Serializable {
         this.type = type;
     }
 
-    public String getOwnerGiveName() {
-        return ownerGiveName;
+    public Person getOwner() {
+        return owner;
     }
 
-    public void setOwnerGiveName(String ownerGiveName) {
-        this.ownerGiveName = ownerGiveName;
-    }
-
-    public String getOwnerSurname() {
-        return ownerSurname;
-    }
-
-    public void setOwnerSurname(String ownerSurname) {
-        this.ownerSurname = ownerSurname;
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     public String getName() {
