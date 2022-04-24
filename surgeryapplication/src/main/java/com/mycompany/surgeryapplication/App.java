@@ -274,14 +274,14 @@ public class App extends Application {
                             Animal data = getTableView().getItems().get(getIndex());
                             
                             String searched
-                                    = "---Animal---"
+                                    = "----- Animal -----"
                                     + "\nType: " + data.type
                                     + "\nName: " + data.name
                                     + "\nColour " + data.colour
                                     + "\nGender: " + data.gender
                                     + "\nAge: " + data.age
                                     + "\nIllnesses: " + data.illnesses
-                                    + "\n---Owner---"
+                                    + "\n----- Owner -----"
                                     + "\nOwner Name " + data.owner.ownerGivenName
                                     + "\nOwner Surname " + data.owner.ownerSurname
                                     + "\nOwner Address " + data.address.location

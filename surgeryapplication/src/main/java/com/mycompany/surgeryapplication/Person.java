@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author star_
+ * @author Umar
  */
 public class Person implements Serializable{
     String ownerGivenName;

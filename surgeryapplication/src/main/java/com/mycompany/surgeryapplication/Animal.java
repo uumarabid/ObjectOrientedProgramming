@@ -15,6 +15,7 @@ public class Animal implements Serializable {
 
     /**
      * instance variables
+     * (Encapsulation)Person and Locations classes
      */
     String type;
     String name;
