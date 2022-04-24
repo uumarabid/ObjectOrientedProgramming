@@ -6,14 +6,14 @@ import java.io.Serializable;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Umar
  */
-public class Person implements Serializable{
+public class Person implements Serializable {
+
     String ownerGivenName;
-    String ownerSurname; 
+    String ownerSurname;
 
     public Person(String ownerGivenName, String ownerSurname) {
         this.ownerGivenName = ownerGivenName;
@@ -35,5 +35,5 @@ public class Person implements Serializable{
     public void setOwnerSurname(String ownerSurname) {
         this.ownerSurname = ownerSurname;
     }
-    
+
 }

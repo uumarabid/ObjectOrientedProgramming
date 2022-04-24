@@ -6,15 +6,15 @@ import java.io.Serializable;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Umar
  */
-public class Locations implements Serializable{
+public class Locations implements Serializable {
+
     String location;
-    
-    public Locations(String theLocation){
+
+    public Locations(String theLocation) {
         location = theLocation;
     }
 
@@ -25,5 +25,5 @@ public class Locations implements Serializable{
     public void setLocation(String location) {
         this.location = location;
     }
-    
+
 }
