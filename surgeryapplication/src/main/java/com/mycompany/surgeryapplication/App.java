@@ -27,17 +27,20 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-/**
+/** GUI for surgery application
  * JavaFX App
+ * @author Umar
  */
 public class App extends Application {
     
+    /** StoreList class contains an arrayList 
+     *  So this class can be used for adding, deleting and searching for items
+     */
     private StoreList animalList;
 
-    // WIDTH and HEIGHT of GUI
-    //private final int WIDTH = 1100;
-    //private final int HEIGHT = 800;
-    // visual components
+    /**
+     *  visual components
+     */
     private Label headingLabel = new Label("Book in your animal"); // main heading
     private Label animallaLabel = new Label("Animal details"); // sub heading
     private Label nameLabel = new Label("Name");
@@ -160,8 +163,10 @@ public class App extends Application {
         displayAnimals.setMaxSize(400, 700);
         viewDataField.setMaxSize(400, 700);
 
-//        stage.setWidth(WIDTH);
-//        stage.setHeight(HEIGHT);
+        /**
+         * Instead of giving width and height manually for GUI display
+         * This responsive approach has been used
+         */
         stage.setMaximized(true);
 
         // call private methods for button event handler
@@ -173,7 +178,9 @@ public class App extends Application {
         stage.show();
     }
 
-    //event handler
+    /** Method to add animal
+     *  Setting some conditions
+     */
     private void addHandler() {
         try {
             String animalType = box.getValue();
@@ -249,7 +256,9 @@ public class App extends Application {
         }
     }
 
-    // took it from https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
+    /** Modified from https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
+     *  Adding button in the table to display the details of owner and animal
+     */
     private void addButtonToTable() {
         TableColumn<Animal, Void> colBtn = new TableColumn("");
         
@@ -265,14 +274,19 @@ public class App extends Application {
                             Animal data = getTableView().getItems().get(getIndex());
                             
                             String searched
-                                    = "Animal"
+                                    = "---Animal---"
+                                    + "\nType: " + data.type
                                     + "\nName: " + data.name
                                     + "\nColour " + data.colour
-                                    + "\nOwner"
+                                    + "\nGender: " + data.gender
+                                    + "\nAge: " + data.age
+                                    + "\nIllnesses: " + data.illnesses
+                                    + "\n---Owner---"
                                     + "\nOwner Name " + data.owner.ownerGivenName
                                     + "\nOwner Surname " + data.owner.ownerSurname
-                                    + "\nRegistration Date " + data.registrationDate
-                                    + "\nOwner Address " + data.address.location;
+                                    + "\nOwner Address " + data.address.location
+                                    + "\nRegistration Date " + data.registrationDate;
+                                    
                             viewDataField.setText(searched);
                         });
                     }

@@ -10,19 +10,29 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-//import serialisation.Animal;
 
+
+/**
+ *
+ * @author Umar
+ */
 public class StoreList {
 
     private ArrayList<Animal> animalsToRegister;
     public final int MAX;
 
+    /** Constructor initialises the empty animal list and sets the maximum list size 
+     *  @param   maxIn The maximum number of animals in the list
+     */
     public StoreList(int maxIn) {
         animalsToRegister = new ArrayList<>();
         MAX = maxIn;
     }
 
-    // adds a new animal to the list
+    /** adds a new animal to the list
+     * @param theAnimal animal to add
+     * @return Returns true if animal is added successfully and false otherwise
+     */
     public boolean addAnimal(Animal theAnimal) {
         if (!isFull()) {
             animalsToRegister.add(theAnimal);
@@ -32,22 +42,32 @@ public class StoreList {
         }
     }
 
-    // tells the list is full
+    /** Tells if the list is full
+     * @return Returns true if the list is full and false otherwise
+     */
     private boolean isFull() {
         return animalsToRegister.size() == MAX;
     }
 
-    //tells the list is empty
+    /** Tells if the list is empty
+     * @return Returns true if the list is empty and false otherwise
+     */
     public boolean isEmpty() {
         return animalsToRegister.isEmpty();
     }
 
-    // total number of animals in the list
+    /** Gets the total number of animals
+     * @return Returns the total number of animals currently in the list
+     */
     public int getTotal() {
         return animalsToRegister.size();
     }
 
-    // animal position in the list
+    /** Read the animal at the given position in the list
+     * @param positionIn the position of the animal in the list
+     * @return Returns the animal at the position in the list
+     *         or null if no animal at the logical position
+     */
     public Animal getAnimal(int positionIn) {
         if (positionIn < 0 || positionIn >= getTotal()) {
             return null;
@@ -57,6 +77,10 @@ public class StoreList {
     }
 
     // animal and owner in the lsit to be displayed
+
+    /** Output all the animals in the list
+     * @return Returns all the animals and owners in the list in an easy to read format
+     */
     public String displayAnimals() {
         String output = "\n";
         for (int counter = 0; counter < animalsToRegister.size(); counter++) {
@@ -73,7 +97,11 @@ public class StoreList {
         return output;
     }
 
-    // deserialize
+    // 
+
+    /** Deserialization 
+     * @return Returns saved animals from surgery.txt file
+     */
     public ArrayList<Animal> loadAnimal() {
         Object obj;
         ArrayList<Animal> loadedAnimals = new ArrayList<>();
@@ -96,8 +124,13 @@ public class StoreList {
         return loadedAnimals;
     }
 
-    //create a save method 
-    // call serialize class here and pass the animalsToRegister
+    
+
+    /** create a save method 
+     *  call serialize class here and pass the animalsToRegister
+     *  SimpleDateFormat class, to get the registration date 
+     * @return Returns true upon saving the data in  /.surgery.txt file
+     */
     public boolean saveAnimals() {
 
         try {
