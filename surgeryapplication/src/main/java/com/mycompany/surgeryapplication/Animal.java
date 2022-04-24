@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Umar
@@ -14,8 +13,7 @@ import java.io.Serializable;
 public class Animal implements Serializable {
 
     /**
-     * instance variables
-     * (Encapsulation)Person and Locations classes
+     * instance variables (Encapsulation)Person and Locations classes
      */
     String type;
     String name;
@@ -28,9 +26,7 @@ public class Animal implements Serializable {
     Locations address;
 
     /**
-     *
      * constructor
-     *
      */
     public Animal(String theType, String theName, String theColour, String theGender, int theAge, String theIllnesses, Person theOwner, Locations theAddress) {
         type = theType;
@@ -154,15 +150,17 @@ public class Animal implements Serializable {
     public String getIllnesses() {
         return illnesses;
     }
+
     /**
-     * 
-     * @param illnesses 
+     *
+     * @param illnesses
      */
     public void setIllnesses(String illnesses) {
         this.illnesses = illnesses;
     }
+
     /**
-     * 
+     *
      * @return registrationDate
      */
     public String getRegistrationDate() {

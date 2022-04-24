@@ -27,19 +27,20 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-/** GUI for surgery application
- * JavaFX App
+/**
+ * GUI for surgery application JavaFX App
  * @author Umar
  */
 public class App extends Application {
-    
-    /** StoreList class contains an arrayList 
-     *  So this class can be used for adding, deleting and searching for items
+
+    /**
+     * StoreList class contains an arrayList So this class can be used for
+     * adding, deleting and searching for items
      */
     private StoreList animalList;
 
     /**
-     *  visual components
+     * visual components
      */
     private Label headingLabel = new Label("Book in your animal"); // main heading
     private Label animallaLabel = new Label("Animal details"); // sub heading
@@ -70,18 +71,18 @@ public class App extends Application {
     private Label searchAnimalNameLabel = new Label("Search animal Name");
     private TextField searchAnimalNameField = new TextField();
     private Button searchButton = new Button("search");
-    
+
     ComboBox<String> box = new ComboBox<>();
     // tableView instance
     private TableView<Animal> table = new TableView<Animal>();
     // searched datafield
     private TextArea viewDataField = new TextArea();
-    
+
     ScrollBar s = new ScrollBar();
-    
+
     @Override
     public void start(Stage stage) {
-        
+
         animalList = new StoreList(20);
         //horizontal boxes
         HBox animalDetails = new HBox(8); // spacing = 8
@@ -98,22 +99,22 @@ public class App extends Application {
         animalNameColumn.setMinWidth(100);
         animalNameColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("name"));
-        
+
         TableColumn colourColumn = new TableColumn("Colour");
         colourColumn.setMinWidth(100);
         colourColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("colour"));
-        
+
         TableColumn genderColumn = new TableColumn("Gender");
         genderColumn.setMinWidth(100);
         genderColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("gender"));
-        
+
         TableColumn ageColumn = new TableColumn("Age");
         ageColumn.setMinWidth(100);
         ageColumn.setCellValueFactory(
                 new PropertyValueFactory<Animal, String>("age"));
-        
+
         TableColumn illnessColumn = new TableColumn("Illness");
         illnessColumn.setMinWidth(100);
         illnessColumn.setCellValueFactory(
@@ -164,22 +165,22 @@ public class App extends Application {
         viewDataField.setMaxSize(400, 700);
 
         /**
-         * Instead of giving width and height manually for GUI display
-         * This responsive approach has been used
+         * Instead of giving width and height manually for GUI display This
+         * responsive approach has been used
          */
         stage.setMaximized(true);
 
         // call private methods for button event handler
         addButton.setOnAction(e -> addHandler());
         searchButton.setOnAction(e -> loadAnimalsInPage());
-        
+
         stage.setScene(scene);
         stage.setTitle("Veterinary Surgery");
         stage.show();
     }
 
-    /** Method to add animal
-     *  Setting some conditions
+    /**
+     * Method to add animal Setting some conditions
      */
     private void addHandler() {
         try {
@@ -198,18 +199,18 @@ public class App extends Application {
             } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0 || Address.length() == 0) {
                 displayAnimals.setText("You must enter your given name, surname and address");
             } else {
-                
+
                 int animalAge = parseInt(ageField.getText());
                 if (animalAge > 100) {
                     displayAnimals.setText("You must enter a proper age");
                 } else {
-                    Person ownerDetail = new Person( ownerGiveName, OwnerSurname);
-                    
+                    Person ownerDetail = new Person(ownerGiveName, OwnerSurname);
+
                     Locations address = new Locations(Address); // remove the above line and use this code for address
-                    
+
                     Animal animalToAdd = new Animal(animalType, animalName, animalColour,
                             animalGender, animalAge, animalIllnesses, ownerDetail, address);
-                    
+
                     animalList.addAnimal(animalToAdd);
                     animalList.saveAnimals();
                     nameField.setText("");
@@ -226,17 +227,17 @@ public class App extends Application {
                     displayAnimals.appendText(animalList.displayAnimals());
                     loadAnimalsInPage();
                 }
-                
+
             }
         } catch (Exception ex) {
-            
+
         }
     }
-    
+
     private void loadAnimalsInPage() {
         try {
             String animalSearchName = searchAnimalNameField.getText();
-            
+
             ArrayList<Animal> searchData = animalList.loadAnimal();
             ArrayList<Animal> filteredData = new ArrayList<>();
             for (int i = 0; i < searchData.size(); i++) {
@@ -249,30 +250,32 @@ public class App extends Application {
             // this is to convert array list to observablelist,
             // table doesn't take arraylist type
             ObservableList<Animal> observableList = FXCollections.observableList(filteredData);
-            
+
             table.setItems(observableList);
         } catch (Exception ex) {
             throw ex;
         }
     }
 
-    /** Modified from https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
-     *  Add view button in the table to display the details of owner and animal
+    /**
+     * Modified from
+     * https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
+     * Add view button in the table to display the details of owner and animal
      */
     private void addButtonToTable() {
         TableColumn<Animal, Void> colBtn = new TableColumn("");
-        
+
         Callback<TableColumn<Animal, Void>, TableCell<Animal, Void>> cellFactory
                 = new Callback<TableColumn<Animal, Void>, TableCell<Animal, Void>>() {
             @Override
             public TableCell<Animal, Void> call(final TableColumn<Animal, Void> param) {
                 final TableCell<Animal, Void> cell = new TableCell<Animal, Void>() {
                     private final Button btn = new Button("View");
-                    
+
                     {
                         btn.setOnAction((ActionEvent) -> {
                             Animal data = getTableView().getItems().get(getIndex());
-                            
+
                             String searched
                                     = "----- Animal -----"
                                     + "\nType: " + data.type
@@ -286,11 +289,11 @@ public class App extends Application {
                                     + "\nOwner Surname " + data.owner.ownerSurname
                                     + "\nOwner Address " + data.address.location
                                     + "\nRegistration Date " + data.registrationDate;
-                                    
+
                             viewDataField.setText(searched);
                         });
                     }
-                    
+
                     @Override
                     public void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
@@ -302,17 +305,17 @@ public class App extends Application {
                     }
                 };
                 return cell;
-            }            
-            
+            }
+
         };
-        
+
         colBtn.setCellFactory(cellFactory);
-        
+
         table.getColumns().add(colBtn);
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
