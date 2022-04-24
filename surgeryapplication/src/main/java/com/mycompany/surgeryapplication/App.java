@@ -257,7 +257,7 @@ public class App extends Application {
     }
 
     /** Modified from https://riptutorial.com/javafx/example/27946/add-button-to-tableview#:~:text=You%20can%20add%20a%20button,setCellFactory(Callback%20value)%20method.&text=In%20this%20application%20we%20are,selected%20and%20its%20information%20printed.
-     *  Adding button in the table to display the details of owner and animal
+     *  Add view button in the table to display the details of owner and animal
      */
     private void addButtonToTable() {
         TableColumn<Animal, Void> colBtn = new TableColumn("");
