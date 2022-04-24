@@ -189,14 +189,14 @@ public class App extends Application {
             String animalColour = colourField.getText();
             String animalGender = genderField.getText();
             String animalIllnesses = illnessesField.getText();
-            String ownerGiveName = givenNameField.getText();
+            String ownerGivenName = givenNameField.getText();
             String OwnerSurname = surnameField.getText();
-            String Address = ownerAddressField.getText(); // i have to add the address field in the UI 
+            String Address = ownerAddressField.getText(); 
             //conditions
             if (animalType.length() == 0 || animalType == "Type of animal" || animalName.length() == 0 || animalColour.length() == 0 || animalGender.length() == 0
                     || ageField.getText().length() == 0 || animalIllnesses.length() == 0) {
                 displayAnimals.setText("You must complete the missing animal details");
-            } else if (ownerGiveName.length() == 0 || OwnerSurname.length() == 0 || Address.length() == 0) {
+            } else if (ownerGivenName.length() == 0 || OwnerSurname.length() == 0 || Address.length() == 0) {
                 displayAnimals.setText("You must enter your given name, surname and address");
             } else {
 
@@ -204,7 +204,7 @@ public class App extends Application {
                 if (animalAge > 100) {
                     displayAnimals.setText("You must enter a proper age");
                 } else {
-                    Person ownerDetail = new Person(ownerGiveName, OwnerSurname);
+                    Person ownerDetail = new Person(ownerGivenName, OwnerSurname);
 
                     Locations address = new Locations(Address);
 
@@ -220,8 +220,8 @@ public class App extends Application {
                     illnessesField.setText("");
                     givenNameField.setText("");
                     surnameField.setText("");
-                    displayAnimals.setText("");
                     ownerAddressField.setText("");
+                    displayAnimals.setText("");
                     displayAnimals.appendText(animalName + " successfully added");
                     displayAnimals.appendText("\n\nThe animals currently awaiting check-up are:");
                     displayAnimals.appendText(animalList.displayAnimals());
@@ -253,7 +253,7 @@ public class App extends Application {
 
             table.setItems(observableList);
         } catch (Exception ex) {
-            throw ex;
+            
         }
     }
 
