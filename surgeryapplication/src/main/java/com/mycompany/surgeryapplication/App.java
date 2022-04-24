@@ -206,7 +206,7 @@ public class App extends Application {
                 } else {
                     Person ownerDetail = new Person(ownerGiveName, OwnerSurname);
 
-                    Locations address = new Locations(Address); // remove the above line and use this code for address
+                    Locations address = new Locations(Address);
 
                     Animal animalToAdd = new Animal(animalType, animalName, animalColour,
                             animalGender, animalAge, animalIllnesses, ownerDetail, address);
