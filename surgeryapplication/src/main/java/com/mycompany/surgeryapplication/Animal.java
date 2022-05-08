@@ -42,7 +42,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return address
      */
     public Locations getAddress() {
         return address;
@@ -58,7 +58,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return type
      */
     public String getType() {
         return type;
@@ -74,7 +74,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return owner details
      */
     public Person getOwner() {
         return owner;
@@ -90,7 +90,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return animal name
      */
     public String getName() {
         return name;
@@ -102,7 +102,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return animal colour
      */
     public String getColour() {
         return colour;
@@ -118,7 +118,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return gender
      */
     public String getGender() {
         return gender;
@@ -132,6 +132,10 @@ public class Animal implements Serializable {
         this.gender = gender;
     }
 
+    /**
+     *
+     * @return age
+     */
     public int getAge() {
         return age;
     }
@@ -146,7 +150,7 @@ public class Animal implements Serializable {
 
     /**
      *
-     * @return
+     * @return illness
      */
     public String getIllnesses() {
         return illnesses;

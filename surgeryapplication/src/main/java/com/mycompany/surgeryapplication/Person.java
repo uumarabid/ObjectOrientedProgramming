@@ -21,18 +21,34 @@ public class Person implements Serializable {
         this.ownerSurname = ownerSurname;
     }
 
+    /**
+     *
+     * @return owner first name
+     */
     public String getOwnerGivenName() {
         return ownerGivenName;
     }
 
+    /**
+     *
+     * @param ownerGivenName
+     */
     public void setOwnerGivenName(String ownerGivenName) {
         this.ownerGivenName = ownerGivenName;
     }
 
+    /**
+     *
+     * @return owner surname
+     */
     public String getOwnerSurname() {
         return ownerSurname;
     }
 
+    /**
+     *
+     * @param ownerSurname
+     */
     public void setOwnerSurname(String ownerSurname) {
         this.ownerSurname = ownerSurname;
     }

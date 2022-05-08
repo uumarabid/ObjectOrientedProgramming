@@ -19,10 +19,18 @@ public class Locations implements Serializable {
         location = theLocation;
     }
 
+    /**
+     *
+     * @return location/address
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     *
+     * @param location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
