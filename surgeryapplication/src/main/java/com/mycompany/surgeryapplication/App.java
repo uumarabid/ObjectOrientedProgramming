@@ -180,7 +180,7 @@ public class App extends Application {
     }
 
     /**
-     * Method to add animal Setting some conditions
+     * Method to add animal Settings and validation
      */
     private void addHandler() {
         try {
@@ -233,7 +233,9 @@ public class App extends Application {
 
         }
     }
-
+/**
+ *  load information on the page
+ */
     private void loadAnimalsInPage() {
         try {
             String animalSearchName = searchAnimalNameField.getText();

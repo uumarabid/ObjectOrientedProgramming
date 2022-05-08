@@ -88,7 +88,7 @@ public class StoreList {
         }
     }
 
-    // animal and owner in the lsit to be displayed
+    // animal and owner in the list to be displayed
     /**
      * Output all the animals in the list
      *
@@ -140,7 +140,7 @@ public class StoreList {
     }
 
     /**
-     * create a save method call serialize class here and pass the
+     * create an object for serialisation and pass the 
      * animalsToRegister SimpleDateFormat class, to get the registration date
      *
      * @return Returns true upon saving the data in /.surgery.txt file
