@@ -9,6 +9,7 @@ import java.io.Serializable;
 /**
  *
  * @author Umar
+ * @version 1.0
  */
 public class Animal implements Serializable {
 

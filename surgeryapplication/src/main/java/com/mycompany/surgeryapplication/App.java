@@ -30,6 +30,7 @@ import javafx.util.Callback;
 /**
  * GUI for surgery application JavaFX App
  * @author Umar
+ * @version 1.0
  */
 public class App extends Application {
 

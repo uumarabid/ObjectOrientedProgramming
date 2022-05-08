@@ -14,6 +14,7 @@ import java.util.Date;
 /**
  *
  * @author Umar
+ * @version 1.0
  */
 public class StoreList {
 

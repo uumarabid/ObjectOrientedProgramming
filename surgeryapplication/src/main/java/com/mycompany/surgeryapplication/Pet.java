@@ -8,6 +8,7 @@ package com.mycompany.surgeryapplication;
 /**
  *
  * @author Umar
+ * @version 1.0
  */
 public class Pet extends Animal {
 
