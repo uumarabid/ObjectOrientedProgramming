@@ -166,6 +166,7 @@ public class StoreList {
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in ./surgery.txt file");
+            animalsToRegister.clear(); // THIS WAS THE BUG THAT NEEDED TO BE FIXED.
         } catch (IOException myException) {
             myException.printStackTrace();
         }
